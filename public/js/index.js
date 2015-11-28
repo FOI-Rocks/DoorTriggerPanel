@@ -1,34 +1,65 @@
 var doorOpenAudio = new Audio('audio/door_open.mp3');
 var marchAudio = new Audio('audio/march.mp3');
+var elapsedFromLastDoorOpen = 0;
+var elapsedFromLastSpecialDoorOpen = 0;
 
 window.onload = function() {
-  tick();
+  setInterval('clockUpdate()', 1000);
+  setInterval('eventDelayHandler()', 1000);
+
   var socket = io.connect('http://localhost:3000');
-  socket.on('event', function(message){
-    if(message.type == 'door-open')
-      doorOpen();
-    else if(message.type =='special-door-open')
-      specialDoorOpen();
+  socket.on('event', function(payload){
+    handleEvent(payload);
   });
 };
 
+/**
+ * Processes events recieved via sockets.
+ * @object payload - Contains the event payload
+ */
+function handleEvent(payload) {
+  if(elapsedFromLastSpecialDoorOpen >= 15*60) {
+    specialDoorOpen();
+    elapsedFromLastSpecialDoorOpen = 0;
+  }
+  if(elapsedFromLastDoorOpen >= 15 && marchAudio.paused == true) {
+    doorOpen();
+  }
+  elapsedFromLastDoorOpen = 0;
+}
+
+/**
+ * Runs the normal door open action.
+ */
 function doorOpen() {
   doorOpenAudio.play();
 }
 
+/**
+ * Runs the special door open action.
+ */
 function specialDoorOpen() {
   marchAudio.play();
 }
 
-function tick() {
+/**
+ * Handles delays and actions upon delay expiry
+ */
+function eventDelayHandler() {
+  elapsedFromLastDoorOpen++;
+  elapsedFromLastSpecialDoorOpen++;
+}
 
+/**
+ * Updates the clock - re-runs every 60 seconds
+ */
+function clockUpdate() {
   var now = new Date();
   var h = now.getHours();
   var m = now.getMinutes();
   var d = now.getDay();
   var mo = now.getMonth();
   var dom = now.getDate();
-  var y = now.getFullYear();
 
   // you can do if statements to get results
   if (d == 0) d = "nedjelja";
@@ -62,6 +93,4 @@ function tick() {
 
   if(m < 10) m = "0" + m;
   document.getElementById("time").innerHTML = h + ":" + m;
-
-  setTimeout('tick()', 60);
 };
