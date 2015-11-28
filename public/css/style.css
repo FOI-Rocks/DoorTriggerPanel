@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+body {
+  font-family: 'Oswald', sans-serif;
+  background-color: #2b2b2b;
+  width: auto;
+  height: 1000px;
+  color: #b3b3b1;
+  margin: 0;
+  padding: 0;
+  text-transform: Uppercase;
+  background: url("../img/background.png");
+  background-size: contain;
+  overflow-y: hidden;
+}
+
+#container {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 300px;
+}
+
+#time {
+  font-size: 110px;
+  line-height: 55px;
+}
+
+#date {
+  font-size: 102px;
+  float: left;
+  padding-right: 5px;
+  color: #161616;
+}
+
+#month {
+  font-size: 45px;
+  line-height: 99px;
+  color: #706F6F;
+}
+
+#day {
+  font-size: 45px;
+  line-height: 0px
+}
