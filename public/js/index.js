@@ -7,7 +7,7 @@ window.onload = function() {
   setInterval('clockUpdate()', 1000);
   setInterval('eventDelayHandler()', 1000);
 
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('http://theforce.foi.rocks');
   socket.on('event', function(payload){
     handleEvent(payload);
   });
