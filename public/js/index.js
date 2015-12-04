@@ -21,6 +21,9 @@ function handleEvent(payload) {
   if(payload.type == 'refresh') {
     window.location.reload();
   }
+  if(payload.type == 'forceSpecialDoorOpen') {
+    specialDoorOpen();
+  }
   if(elapsedFromLastSpecialDoorOpen >= 15*60) {
     specialDoorOpen();
     elapsedFromLastSpecialDoorOpen = 0;

@@ -12,7 +12,7 @@ app.get('/door-open', function(req, res){
 });
 
 app.get('/special-door-open', function(req, res){
-  io.sockets.emit('event',{type:'special-door-open'});
+  io.sockets.emit('event',{type:'forceSpecialDoorOpen'});
   console.log('Special door open event!')
   res.json({"success": "true"});
 });
