@@ -9,7 +9,10 @@ window.onload = function() {
 
   var socket = io.connect('http://theforce.foi.rocks');
   socket.on('event', function(payload){
-    handleEvent(payload);
+    if(payload.type == 'forceSpecialDoorOpen') {
+      specialDoorOpen();
+    }
+    else handleEvent(payload);
   });
 };
 
@@ -20,9 +23,6 @@ window.onload = function() {
 function handleEvent(payload) {
   if(payload.type == 'refresh') {
     window.location.reload();
-  }
-  if(payload.type == 'forceSpecialDoorOpen') {
-    specialDoorOpen();
   }
   if(elapsedFromLastSpecialDoorOpen >= 15*60) {
     specialDoorOpen();

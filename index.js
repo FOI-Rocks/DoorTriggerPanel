@@ -17,6 +17,12 @@ app.get('/special-door-open', function(req, res){
   res.json({"success": "true"});
 });
 
+app.get('/refresh', function(req, res){
+  io.sockets.emit('event',{type:'refresh'});
+  console.log('Refresh event!')
+  res.json({"success": "true"});
+});
+
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
