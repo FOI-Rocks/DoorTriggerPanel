@@ -18,6 +18,9 @@ window.onload = function() {
  * @object payload - Contains the event payload
  */
 function handleEvent(payload) {
+  if(payload.type == 'refresh') {
+    window.location.reload();
+  }
   if(elapsedFromLastSpecialDoorOpen >= 15*60) {
     specialDoorOpen();
     elapsedFromLastSpecialDoorOpen = 0;
