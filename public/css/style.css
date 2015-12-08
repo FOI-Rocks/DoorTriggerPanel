@@ -1,16 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 body {
   font-family: 'Oswald', sans-serif;
-  background-color: #2b2b2b;
   width: auto;
   height: 1000px;
-  color: #b3b3b1;
+  color: #9B9B9B;
   margin: 0;
   padding: 0;
   text-transform: Uppercase;
-  background: url("../img/background.png");
-  background-size: contain;
+  background: url("../img/background-new.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   overflow-y: hidden;
+  background-color: #F6F6F4;
 }
 
 #container {
@@ -41,4 +42,67 @@ body {
 #day {
   font-size: 45px;
   line-height: 0px
+}
+
+/* Footer */
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+footer > .text {
+	background-color: transparent;
+	padding: 10px 20px;
+	text-transform: none;
+	color: #5F5F5F;
+}
+
+footer > .text > #hashtags {
+	float: right;
+}
+
+/* Progress bar */
+progress, progress[role] {
+	vertical-align: top;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	background-size: auto;
+	height: 50px;
+	width: 100%;
+	background-color: #FFF;
+}
+
+.bar {
+	position: relative;
+	transition: width 5s ease;
+}
+
+.bar-red::-webkit-progress-value {
+   background: #D2331E;
+}
+
+.bar-red::-moz-progress-bar {
+	background: #D2331E;
+}
+
+.bar-blue::-webkit-progress-value {
+	background: #FCB034;
+}
+
+.bar-blue::-moz-progress-bar {
+	background: #FCB034;
+}
+
+@-webkit-keyframes bar-fill {
+	0% {
+		width: 0;
+	}
+}
+@keyframes bar-fill {
+	0% {
+		width: 0;
+	}
 }

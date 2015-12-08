@@ -53,7 +53,9 @@ function specialDoorOpen() {
  */
 function eventDelayHandler() {
   elapsedFromLastDoorOpen++;
+  document.getElementById("door-progress").value = elapsedFromLastDoorOpen;
   elapsedFromLastSpecialDoorOpen++;
+  document.getElementById("march-progress").value = elapsedFromLastSpecialDoorOpen;
 }
 
 /**
