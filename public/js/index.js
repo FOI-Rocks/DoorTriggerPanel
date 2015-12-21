@@ -1,5 +1,5 @@
 var doorOpenAudio = new Audio('audio/door_open.mp3');
-var marchAudio = new Audio('audio/march.mp3');
+var specialDoorOpenAudio = new Audio('audio/special_door_open.mp3');
 var elapsedFromLastDoorOpen = 0;
 var elapsedFromLastSpecialDoorOpen = 0;
 
@@ -28,7 +28,7 @@ function handleEvent(payload) {
     specialDoorOpen();
     elapsedFromLastSpecialDoorOpen = 0;
   }
-  if(elapsedFromLastDoorOpen >= 15 && marchAudio.paused == true) {
+  if(elapsedFromLastDoorOpen >= 15 && specialDoorOpenAudio.paused == true) {
     doorOpen();
   }
   elapsedFromLastDoorOpen = 0;
@@ -45,7 +45,7 @@ function doorOpen() {
  * Runs the special door open action.
  */
 function specialDoorOpen() {
-  marchAudio.play();
+  specialDoorOpenAudio.play();
 }
 
 /**
@@ -53,9 +53,7 @@ function specialDoorOpen() {
  */
 function eventDelayHandler() {
   elapsedFromLastDoorOpen++;
-  document.getElementById("door-progress").value = elapsedFromLastDoorOpen;
   elapsedFromLastSpecialDoorOpen++;
-  document.getElementById("march-progress").value = elapsedFromLastSpecialDoorOpen;
 }
 
 /**
