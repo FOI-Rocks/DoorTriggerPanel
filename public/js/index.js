@@ -98,5 +98,6 @@ function clockUpdate() {
   document.getElementById("date").innerHTML = dom;
 
   if(m < 10) m = "0" + m;
-  document.getElementById("time").innerHTML = h + ":" + m;
+  // Quick and dirty fix, only for Kolinda
+  document.getElementById("time").innerHTML = ((h+1)%24) + ":" + m;
 };
